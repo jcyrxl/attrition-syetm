@@ -1,0 +1,51 @@
+/* The request form page (Program Head): the same look as the rest of the system — white cards, teal accents, numbered steps. */
+.rf-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 22px; margin: 0 24px 48px; align-items: start; }
+@media (max-width: 1050px) { .rf-wrap { grid-template-columns: 1fr; } }
+.rf-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 4px 30px 26px; }
+.rf-step { display: flex; gap: 12px; align-items: flex-start; padding-top: 26px; }
+.rf-step:first-child { padding-top: 22px; }
+.rf-num { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-50); color: var(--brand-700); font-weight: 700; font-size: 13px; display: grid; place-items: center; border: 1px solid var(--brand-100); }
+.rf-step h2 { font-size: 15.5px; font-weight: 700; margin: 0; color: var(--ink); }
+.rf-step p { margin: 2px 0 0; font-size: 12.5px; color: var(--ink-3); }
+.rf-body { margin: 14px 0 0 40px; }
+.rf-l { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink-2); margin: 0 0 6px; }
+.rf-grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 700px) { .rf-grid3 { grid-template-columns: 1fr; } .rf-body { margin-left: 0; } }
+.rf-card input[type=text], .rf-card input[type=date], .rf-card select, .rf-card textarea { width: 100%; box-sizing: border-box; padding: 11px 13px; border: 1px solid var(--line-2); border-radius: 10px; background: #fff; font: inherit; color: var(--ink); transition: border-color .15s var(--ease), box-shadow .15s var(--ease); }
+.rf-card textarea { min-height: 84px; resize: vertical; }
+.rf-card input:focus, .rf-card select:focus, .rf-card textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(11, 143, 163, .16); }
+.rf-gap { height: 14px; }
+
+/* the two kinds of request, as big choices */
+.rf-types { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 700px) { .rf-types { grid-template-columns: 1fr; } }
+.rf-type { position: relative; display: block; cursor: pointer; }
+.rf-type input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.rf-type-body { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border: 1.5px solid var(--line-2); border-radius: var(--r); background: #fff; transition: border-color .15s var(--ease), background .15s var(--ease), box-shadow .15s var(--ease); }
+.rf-type:hover .rf-type-body { border-color: var(--c); }
+.rf-type-ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--bg); color: var(--c); display: grid; place-items: center; font-size: 18px; }
+.rf-type-body strong { display: block; font-size: 14.5px; color: var(--ink); }
+.rf-type-body small { display: block; margin-top: 3px; font-size: 12px; color: var(--ink-3); line-height: 1.4; }
+.rf-type input:checked + .rf-type-body { border-color: var(--c); background: var(--bg); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent); }
+.rf-type input:checked + .rf-type-body::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 10px; right: 12px; font-size: 12px; color: #fff; background: var(--c); width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; }
+.rf-type input:focus-visible + .rf-type-body { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.rf-actions { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+.rf-actions .hint { margin-right: auto; font-size: 12.5px; color: var(--ink-3); display: flex; gap: 8px; align-items: center; }
+.rf-actions .hint i { color: var(--brand); }
+
+/* the side notes */
+.rf-side { display: grid; gap: 16px; position: sticky; top: 84px; }
+.rf-note { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow-1); padding: 18px 20px; }
+.rf-note h3 { margin: 0 0 12px; font-size: 14px; font-weight: 700; }
+.rf-who { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.rf-who li { display: flex; gap: 12px; align-items: flex-start; font-size: 12.8px; color: var(--ink-2); line-height: 1.45; }
+.rf-who li > i { flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 13px; background: var(--brand-50); color: var(--brand-700); }
+.rf-who li strong { display: block; color: var(--ink); font-size: 13px; }
+.rf-who a { color: var(--brand-700); font-weight: 600; text-decoration: none; } .rf-who a:hover { text-decoration: underline; }
+.rf-note.tip { background: var(--brand-50); border-color: var(--brand-100); }
+.rf-note.tip p { margin: 0; font-size: 12.8px; color: var(--brand-900); line-height: 1.5; }
+.rf-flash { margin: 0 24px 16px; padding: 13px 16px; border-radius: var(--r); display: flex; gap: 10px; align-items: center; font-size: 13.5px; }
+.rf-flash.success { background: var(--ok-bg); color: #14693a; border: 1px solid #bfe3cc; }
+.rf-flash.error { background: var(--bad-bg); color: var(--bad); border: 1px solid #f3c2bd; }
+.rf-flash a { color: inherit; font-weight: 700; margin-left: auto; text-decoration: underline; }

@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#eef5fb;
+    overflow:hidden;
+}
+
+.container{
+    display:flex;
+    width:100%;
+    height:100vh;
+}
+
+.left-panel{
+    width:55%;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background-image:
+        linear-gradient(rgba(3,35,65,.82), rgba(7,75,116,.82)),
+        url("images/bg.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    backdrop-filter:blur(2px);
+    background:rgba(0,30,60,.15);
+}
+
+.branding{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:white;
+}
+
+.logo{
+    width:250px;
+    max-width:60%;
+    height:auto;
+    margin-bottom:22px;
+    filter:drop-shadow(0 0 22px rgba(255,255,255,.45));
+}
+
+.card-logo{
+    display:none;
+}
+
+.branding h1{ font-size:46px; font-weight:700; line-height:1.15; }
+.branding span{ color:#3CE7F2; }
+.branding h3{ margin-top:12px; font-size:28px; font-weight:500; }
+.branding h4{ color:#39D9FF; margin-top:5px; font-size:24px; font-weight:500; }
+.branding p{ margin-top:35px; color:#f5f5f5; font-size:18px; }
+
+.right-panel{
+    width:45%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f7fbff;
+}
+
+.login-card{
+    width:430px;
+    background:#fff;
+    border-radius:25px;
+    padding:50px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.login-card h1{ color:#004c99; margin-bottom:8px; }
+.login-card p{ color:#666; margin-bottom:30px; }
+.login-card label{ display:block; margin-bottom:8px; font-size:14px; font-weight:600; color:#333; }
+
+.input-box{ position:relative; width:100%; margin-bottom:20px; }
+
+.input-box input{
+    width:100%;
+    height:50px;
+    padding-left:45px;
+    padding-right:45px;
+    border:1px solid #d8d8d8;
+    border-radius:10px;
+    outline:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+.input-icon{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#0078d7;
+    font-size:15px;
+    z-index:10;
+    pointer-events:none;
+}
+
+#togglePassword{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#888;
+    cursor:pointer;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;
+    height:20px;
+    z-index:10;
+}
+
+.input-box input:focus{
+    border-color:#1E88E5;
+    box-shadow:0 0 8px rgba(30,136,229,.25);
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#0078d7,#0099ff);
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(0,120,215,.35);
+}
+
+.footer{ text-align:center; margin-top:30px; color:#777; font-size:13px; }
+
+@media(max-width:992px){
+    .left-panel{ display:none; }
+    .right-panel{ width:100%; }
+    .login-card{ width:90%; max-width:430px; }
+}
+
+/* Short screens: keep the whole branding block visible (the page never scrolls). */
+@media(max-height:760px){
+    .logo{ width:170px; margin-bottom:12px; }
+    .branding h1{ font-size:44px; }
+    .branding h3{ font-size:22px; margin-top:6px; }
+    .branding h4{ font-size:19px; }
+    .branding p{ margin-top:20px; font-size:16px; }
+}
+
+/* On phones/tablets the left panel is hidden, so show the logo above "Welcome!" instead. */
+@media(max-width:992px){
+    .card-logo{ display:block; width:96px; height:auto; margin:0 auto 14px; }
+}

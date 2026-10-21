@@ -1,0 +1,76 @@
+/* The class page: the sheet is the star — everything above it is one slim strip, so every student and grade is in view at once. */
+body .main { padding-left: 20px; padding-right: 20px; }
+#sheet { max-width: 100%; }
+#sheet .cls-bar, #sheet .cls-subbar, #sheet .cls-pane, #sheet .cls-banner, #sheet .cls-tools, #sheet .cls-panel { margin-left: 0; margin-right: 0; }
+
+/* the header: back arrow, class, and the actions — one row */
+.cls-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 2px 8px; flex-wrap: wrap; }
+.cls-head-l { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.cls-head .back-link { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: #fff; border: 1px solid var(--line); color: var(--brand-700); text-decoration: none; padding: 0; margin: 0; }
+.cls-head .back-link:hover { background: var(--brand-50); }
+.cls-head h1 { font-size: 20px; font-weight: 700; color: #0c2f3a; margin: 0; letter-spacing: -.2px; line-height: 1.2; }
+.cls-head h1 span { font-weight: 600; color: #0b8fa3; }
+.cls-head p { font-size: 12px; color: #6b7f88; margin: 1px 0 0; }
+.cls-head-r { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 0; }
+.cls-lockline { display: flex; align-items: center; gap: 10px; padding: 3px 3px 3px 14px; border: 1px solid var(--line); background: #fff; border-radius: 999px; font-size: 12.5px; color: var(--ink-2); font-weight: 500; }
+.cls-lockline[hidden] { display: none; }
+.cls-lockline .btn-primary { padding: 7px 14px; border-radius: 999px; font-size: 12.5px; }
+.cls-head-r .btn-secondary { padding: 8px 14px; font-size: 12.5px; }
+
+/* the bar: terms on the left; search, filter and the alert pill on the right */
+.cls-bar { margin: 0 0 6px !important; }
+.cls-bar .cls-tabs button { padding: 8px 14px; font-size: 13.5px; }
+.cls-bar-right { padding-bottom: 2px; }
+.cls-alertbox { position: relative; margin: 0 !important; padding: 6px 12px !important; border-radius: 999px !important; display: inline-flex !important; align-items: center; gap: 7px; font-size: 12.5px !important; font-weight: 600; cursor: default; }
+.cls-alertbox i { font-size: 13px !important; margin: 0 !important; }
+.cls-alertbox .abs-pop { display: none; position: absolute; top: calc(100% + 8px); right: 0; z-index: 60; width: 360px; max-width: 80vw; background: #fff; color: #6b4600; border: 1px solid #f0c969; border-radius: 12px; box-shadow: var(--shadow-2); padding: 12px 14px; font-weight: 400; line-height: 1.6; }
+.cls-alertbox:hover .abs-pop, .cls-alertbox:focus .abs-pop, .cls-alertbox:focus-within .abs-pop { display: block; }
+.cls-alertbox .abs-pop b { display: inline-block; margin-top: 4px; }
+
+/* terms: Scores | Attendance, and the add buttons */
+.cls-subbar { margin: 0 0 8px !important; gap: 8px; }
+.cls-seg { display: inline-flex; background: #e9f0f4; border-radius: 10px; padding: 3px; }
+.cls-seg button { border: 0; background: transparent; padding: 6px 13px; border-radius: 8px; font: 600 12.5px 'Poppins', sans-serif; color: #55777f; cursor: pointer; }
+.cls-seg button.on { background: #fff; color: #064a5e; box-shadow: 0 1px 3px rgba(6,74,94,.15); }
+.cls-chipbtn { padding: 6px 12px !important; font-size: 12.5px !important; }
+.cls-legend { font-size: 11.5px; }
+.cls-pane[data-view="scores"] .col-att { display: none; }
+.cls-pane[data-view="att"] .col-sc { display: none; }
+
+/* the table fills what is left of the screen */
+.sheet-scroll { max-height: calc(100vh - 200px); min-height: 320px; border-radius: 14px; box-shadow: 0 1px 3px rgba(6,74,94,.06); }
+table.sheet { font-size: 14px; }
+table.sheet th, table.sheet td { padding: 9px 12px; }
+table.sheet thead th { font-size: 12px; letter-spacing: .1px; }
+table.sheet thead th.sticky { color: #064a5e !important; font-size: 12.5px; }
+table.sheet thead th.ah { padding: 6px 8px; }
+table.sheet thead th.ah small { display: none; }               /* the kind is in the column's name; less height */
+table.sheet thead th .out { font-size: 11px; }
+table.sheet .sticky { min-width: 230px; }
+table.sheet td.name strong { font-weight: 600; color: #0f2f3b; }
+table.sheet tbody tr:hover td { background: #f1f9fb; }
+table.sheet input.score { width: 72px; padding: 6px 6px; font-size: 14px; }
+table.sheet td[data-cell="grade"], table.sheet td[data-cell="final"] { background: #e8f6ee; color: #15703f; }
+table.sheet td.bad[data-cell] { background: #fdecec; color: #b3261e; }
+table.sheet .abs.warn { background: #fff3dc; color: #8a5a00; font-weight: 700; }
+table.sheet .abs.drop { background: #fdecec; color: #b3261e; font-weight: 700; }
+
+/* the note: two lines at most, the whole note on hover */
+table.sheet td.attn-text { min-width: 230px; max-width: 320px; width: 300px; white-space: normal; text-align: left; font-weight: 500; font-size: 12.5px; color: #b3261e; }
+.attn-clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; cursor: help; }
+.attn-tip { position: fixed; z-index: 9000; max-width: 380px; background: #17323f; color: #fff; padding: 10px 13px; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.25); font-size: 12.5px; line-height: 1.5; pointer-events: none; }
+.attn-tip[hidden] { display: none; }
+.attn-tip b { display: block; color: #ffd58a; margin-bottom: 3px; }
+
+/* a student who is no longer enrolled stays visible, quietly */
+table.sheet tr.gone td { opacity: .6; }
+table.sheet tr.gone td.act { opacity: 1; }
+.gone-tag { display: inline-block; margin-top: 3px; padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600; color: var(--c, #8a959b); border: 1px solid var(--c, #8a959b); }
+table.sheet td.name .gone-tag { display: block; width: fit-content; }
+.du-btn { border: 1px solid #e57373; background: #fff; color: #b3261e; border-radius: 8px; padding: 6px 10px; font: 600 12px 'Poppins', sans-serif; cursor: pointer; white-space: nowrap; }
+.du-btn:hover:not([disabled]) { background: #fdecec; }
+.du-btn.urgent { background: #e53935; color: #fff; border-color: #e53935; }
+.du-btn[disabled] { opacity: .45; cursor: not-allowed; }
+.du-btn[data-act="undo-du"] { border-color: #9db4be; color: #3d5560; }
+@media (max-width: 900px) { table.sheet .sticky { min-width: 170px; } }
+table.sheet thead th.calc:not(.g), table.sheet thead th.sticky { color: #064a5e !important; }
